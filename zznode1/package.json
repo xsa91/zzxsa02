@@ -1,0 +1,38 @@
+{
+	"description": "NodeJS module than the XSJS codes",
+	"dependencies": {
+		"express": "latest",
+		"@sap/xssec": "latest",
+		"@sap/xsenv": "latest",
+		"@sap/hdbext": "latest",
+		"@sap/textbundle": "latest",
+		"@sap/logging": "latest",
+		"passport": "latest",
+		"async": "latest",
+		"ws": "latest",
+		"accept-language-parser": "latest",
+		"node-xlsx": "latest",
+		"node-zip": "latest",
+		"xmldoc": "latest",
+		"winston": "latest",
+		"body-parser": "latest",
+		"elementtree": "latest",
+		"then-request": "latest"
+	},
+	"devDependencies": {
+		"jest": "latest",
+		"jest-junit": "latest"
+	},
+	"files": [],
+	"main": "server.js",
+	"name": "zznode1",
+	"scripts": {
+		"test": "node node_modules/jest/bin/jest --config jest.json",
+		"test-coverage": "node node_modules/jest/bin/jest --coverage --config jest.json",
+		"start": "node server.js"
+	},
+	"engines": {
+		"node": "14.x"
+	},
+	"version": "1.0.0"
+}

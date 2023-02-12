@@ -1,0 +1,52 @@
+ID: zzxsa02
+_schema-version: "2.1"
+version: 0.0.1
+modules:
+  - name: zzxsa02-db
+    type: hdb
+    path: db
+    parameters:
+      memory: 256M
+      disk-quota: 512M
+    requires:
+      - name: zzxsa02-db-hdi-container
+  - name: zzxsa02-srv
+    type: nodejs
+    path: srv
+    parameters:
+      memory: 512M
+      disk-quota: 512M
+    provides:
+      - name: srv_api
+        properties:
+          url: ${default-url}
+    requires:
+      - name: zzxsa02-db-hdi-container
+      - name: zzxsa02-uaa
+
+  - name: web
+    type: html5
+    path: web
+
+
+  - name: zznode1
+    type: nodejs
+    path: zznode1
+    provides:
+     - name: zznode1_api
+       properties:
+          url: ${default-url}
+
+resources:
+  - name: zzxsa02-db-hdi-container
+    type: com.sap.xs.hdi-container
+    properties:
+      hdi-container-name: ${service-name}
+  - name: zzxsa02-uaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service-plan: default
+      service: xsuaa
+      config:
+        xsappname: zzxsa02
+        tenant-mode: dedicated
